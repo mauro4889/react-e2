@@ -5,6 +5,7 @@ import {Routes, Route, Navigate} from 'react-router-dom';
 import { Todo } from './pages/TodoList/Todo';
 import { Navbar } from './components/Navbar/Navbar';
 import { Pokeapi } from './pages/Pokeapi/Pokeapi'
+import { TareaProvider } from './context/GlobalContext';
 
 function App() {
   const handleSubmit = (e, tarea) => {
@@ -12,13 +13,16 @@ function App() {
 }
 return ( 
   <div className = "App" >
-    <Navbar/>
-    <Routes>
-      <Route path='/' element={<Navigate to="home"/>}></Route>
-      <Route path='home' element={<Home/>}></Route>
-      <Route path='todolist' element={<Todo/>}></Route>
-      <Route path='pokeapi' element={<Pokeapi/>}></Route>
-    </Routes>
+    <TareaProvider>
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<Navigate to="home"/>}></Route>
+        <Route path='home' element={<Home/>}></Route>
+        <Route path='todolist' element={<Todo/>}></Route>
+        <Route path='pokeapi' element={<Pokeapi/>}></Route>
+      </Routes>
+    </TareaProvider>
+    
   </div>
 );
 

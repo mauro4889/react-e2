@@ -20,8 +20,7 @@ const ListStyled = styled.div`
 	margin-top: 0;
 `
 
-export const List = props => {	
-	const {lista, setLista} = props;
+export const List = ({lista, setLista}) => {
 
 	const tarea = lista.map(item=>{
 	return <h3>{item.tarea}</h3>

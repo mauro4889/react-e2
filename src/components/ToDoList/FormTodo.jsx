@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
+import { useGlobalContext } from '../../context/GlobalContext';
 
 const ButtonStyled = styled.button`
     background-color: #0B5ED7;
@@ -28,8 +29,10 @@ const InputStyled = styled.input`
 `
 
 
-export const FormTodo = props => {
-    const {agregarTarea} = props
+export const FormTodo = ({agregarTarea}) => {
+
+    const contextValue = useGlobalContext()
+
     const [tarea, setTarea] = useState("");
 
     const handleSubmit = e => {
@@ -42,10 +45,12 @@ export const FormTodo = props => {
         localStorage.setItem('tareas', tarea)
     }
 
+    console.log({contextValue})
+
 	return (
         <FormStyled onSubmit={handleSubmit}>
             <h2>Ingrese tarea</h2>
-            <InputStyled type="text" 
+            <InputStyled type="text"
             className='inputForm'
             onChange={e=> setTarea(e.target.value)}/>
             <ButtonStyled className='btnAgregar'
