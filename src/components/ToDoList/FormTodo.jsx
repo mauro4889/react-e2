@@ -29,32 +29,17 @@ const InputStyled = styled.input`
 `
 
 
-export const FormTodo = ({agregarTarea}) => {
-
-    const contextValue = useGlobalContext()
-
-    const [tarea, setTarea] = useState("");
-
-    const handleSubmit = e => {
-        e.preventDefault();  
-        agregarTarea({tarea});
-        setTarea("");
-    };
-
-    const saveData = () =>{
-        localStorage.setItem('tareas', tarea)
-    }
-
-    console.log({contextValue})
+export const FormTodo = () => {
+    const {tarea, handleChange, handleSubmit} = useGlobalContext()
 
 	return (
         <FormStyled onSubmit={handleSubmit}>
             <h2>Ingrese tarea</h2>
             <InputStyled type="text"
             className='inputForm'
-            onChange={e=> setTarea(e.target.value)}/>
+            onChange={handleChange} value={tarea}/>
             <ButtonStyled className='btnAgregar'
-            disabled={!tarea} onClick={saveData}>
+            disabled={!tarea}>
                 Agregar
             </ButtonStyled>
         </FormStyled>

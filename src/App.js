@@ -8,22 +8,20 @@ import { Pokeapi } from './pages/Pokeapi/Pokeapi'
 import { TareaProvider } from './context/GlobalContext';
 
 function App() {
-  const handleSubmit = (e, tarea) => {
-    e.preventDefault();
-}
+
 return ( 
+  <TareaProvider>
   <div className = "App" >
-    <TareaProvider>
+    
       <Navbar/>
       <Routes>
         <Route path='/' element={<Navigate to="home"/>}></Route>
         <Route path='home' element={<Home/>}></Route>
         <Route path='todolist' element={<Todo/>}></Route>
         <Route path='pokeapi' element={<Pokeapi/>}></Route>
-      </Routes>
-    </TareaProvider>
-    
+      </Routes>   
   </div>
+  </TareaProvider> 
 );
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useGlobalContext } from '../../context/GlobalContext';
 
 const ButtonStyled = styled.button`
     background-color: #0B5ED7;
@@ -20,17 +21,13 @@ const ListStyled = styled.div`
 	margin-top: 0;
 `
 
-export const List = ({lista, setLista}) => {
+export const List = () => {
+
+	const {lista, borrar} = useGlobalContext()
 
 	const tarea = lista.map(item=>{
-	return <h3>{item.tarea}</h3>
+	return <h3 key={item[item]}>{item}</h3>
 	})
-
-	const borrar = ((e)=> {
-		tarea.length = 0;
-		setLista(tarea);
-		localStorage.clear();
-	});
 
   return (
 	<ListStyled>
